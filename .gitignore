@@ -52,11 +52,11 @@ Thumbs.db
 .vscode
 
 # logs and runs
-logs/
 runs/
 
-# Model checkpoints
+# Model checkpoints (allow logs/*.pt)
 *.pt
+!logs/**/*.pt
 *.pth
 *.ckpt
 
