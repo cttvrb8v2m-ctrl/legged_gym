@@ -38,7 +38,7 @@ legged_gym/
 │       ├── eval_stairs_joint.py    # 台阶评测
 │       └── eval_rma_alpha.py       # RMA alpha 扫描
 ├── resources/robots/go1/meshes/    # Go1 mesh (分片，clone后运行 assemble_trunk.sh)
-└── logs/rough_go1/7/               # 训练 checkpoint + 评测数据 (model_958.pt)
+└── logs/rough_go1/7/               # 训练 checkpoint + 评测数据 (⭐ model_880.pt 推荐)
 ```
 
 > **注意**：`resources/robots/go1/meshes/trunk.dae` 因大小限制分片存储，clone 后执行：
@@ -77,7 +77,7 @@ python legged_gym/scripts/train.py --task=go1 --num_envs=1000 --headless
 ### 回放演示
 
 ```bash
-python legged_gym/scripts/play.py --task=go1 --load_run=7 --checkpoint=958
+python legged_gym/scripts/play.py --task=go1 --load_run=7 --checkpoint=880
 ```
 
 初始相机位置已设置，避免黑屏。
@@ -87,7 +87,7 @@ python legged_gym/scripts/play.py --task=go1 --load_run=7 --checkpoint=958
 ```bash
 # 评测平地 3.5 m/s 命令速度下的稳定性
 python legged_gym/scripts/eval_go1_speed.py \
-  --load_run=7 --checkpoint=958 \
+  --load_run=7 --checkpoint=880 \
   --command_x=3.5 --num_envs=100
 ```
 
@@ -174,9 +174,10 @@ python plot_training.py --log_dir logs/rough_go1/7
 
 | Checkpoint | 说明 |
 |------------|------|
-| model_860.pt / 880.pt | 中期训练点 |
-| model_900.pt / 920.pt / 940.pt | 稳定后微调 |
-| **model_958.pt** | **最终推荐模型** |
+| model_860.pt | 中期训练点 |
+| **model_880.pt** | **⭐ 最推荐模型（综合表现最佳）** |
+| model_900.pt / 920.pt / 940.pt | 后期微调点 |
+| model_958.pt | 最终训练点 |
 
 包含：
 - 完整 TensorBoard tfevents 日志
